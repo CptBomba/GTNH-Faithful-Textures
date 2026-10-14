@@ -21,7 +21,7 @@ export function packProgress(assetsNames?: string[]): number {
 		: cache.paths
 	).forEach((filePath) => {
 		const fullPath = path.resolve(FAITHFUL_TEXTURES_DIRECTORY.replace('assets', ''), filePath);
-		const assetFolder = fullPath.split('assets')[1].slice(1).split('\\')[0];
+		const assetFolder = fullPath.split('assets')[1].slice(1).split(/[\\/]/)[0];
 
 		if (!assetsDone.has(assetFolder)) assetsDone.set(assetFolder, { done: 0, todo: 0 });
 		assetsDone.get(assetFolder)!.todo++;
